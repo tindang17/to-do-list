@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css");
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.todoForm {
+  width: 50%;
+  border-top: 1px solid black;
+  display: flex;
+  padding: 5px;
+  position: fixed;
+}
+
+.todoAdd {
+  margin-left: 80px;
+  height: 30px;
+}
