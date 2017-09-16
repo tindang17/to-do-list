@@ -20,7 +20,7 @@ class ToDoListItem extends Component {
 
   handleDelete () {
     this.props.onDelete(this.props.item.name);
-  }
+  };
   render() {
     let _style = 'line-through';
     if(!this.state.isDone) {

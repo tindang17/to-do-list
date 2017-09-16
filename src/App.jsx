@@ -3,6 +3,7 @@ import logo from './style/logo.svg';
 import './style/App.css';
 import ReactDOM from 'react-dom';
 import ToDoForm from './components/toDoForm.jsx';
+import ToDoList from './components/toDoList.jsx';
 // 
 class ToDoBanner extends Component {
   render () {

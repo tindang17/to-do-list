@@ -1,6 +1,6 @@
 // ToDo List
 import React, {Component} from 'react';
-import ToDoListItem from './ToDoListItem.jsx'
+import ToDoListItem from './toDoListItem.jsx';
 class ToDoList extends Component {
   render() {
     const items = this.props.items.map(item => {
