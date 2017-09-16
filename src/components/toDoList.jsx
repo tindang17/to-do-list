@@ -7,9 +7,16 @@ class ToDoList extends Component {
       return <ToDoListItem item = {item} key = {item.id} onDelete = {this.props.onDelete}/>
     });
     return (
-      <main className='todoItems'>
-        <ul>{items}</ul>
-      </main>
+     
+     <div className="container">
+        <div className="row">
+          <div className="col-xs-12">
+            <div className='todoItems'>
+              <ul style={{width:'1040px'}}>{items}</ul>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   };
 }

@@ -5,7 +5,19 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+ul {
+  text-align: left;
+}
+.deleteToDo {
+  margin-left: 420px;
+}
 
+.todoApp {
+  width: 850px;
+}
+.todoBanner {
+  text-align: left;
+}
 .todoForm {
   width: 50%;
   border-top: 1px solid black;
@@ -16,5 +28,18 @@ body {
 
 .todoAdd {
   margin-left: 80px;
-  height: 30px;
+  height: 32px;
+}
+
+.todoCatalogForm {
+  float: left;
+  border-top: 1px solid black;
+  display: flex;
+  padding: 5px;
+}
+
+.todoCatalogAdd {
+  float: left;
+  height: 32px;
+  margin-left: 2px;
 }

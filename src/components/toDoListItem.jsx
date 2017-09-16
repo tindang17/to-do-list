@@ -27,12 +27,14 @@ class ToDoListItem extends Component {
       _style= 'none';
     };
     return (
-      <div className='todoItem'>
-        <li>
-          <span style={{'textDecoration': _style}}>{this.props.item.name}</span> 
-          <input type='checkbox' onClick={this.handleClick} checked={this.state.isDone}/>
-          <button type='button' name='delete' onClick={this.handleDelete}>&times;</button>
-        </li>
+      <div class='container'>
+        <div className='todoItem'>
+          <li>
+            <span style={{'textDecoration': _style}}>{this.props.item.name}</span> 
+            <input type='checkbox' className='todoIsDone' onClick={this.handleClick} checked={this.state.isDone}/>
+            <button type='button' className='deleteToDo' onClick={this.handleDelete}>&times;</button>
+          </li>
+        </div>
       </div>
     );
   };

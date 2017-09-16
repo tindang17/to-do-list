@@ -1,8 +1,6 @@
-// ToDoList form
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-
-class ToDoForm extends Component {
+class ToDoCatalogForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,22 +27,16 @@ class ToDoForm extends Component {
 
   render() {
     return (
-      <div>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-xs-12'>
-              <form onSubmit={this.handleSubmit}>
-                <div className='form-group'>
-                  <input type='text'className='todoForm' placeholder='Enter New Task' 
-                        ref='item' onChange={this.handleChange} value={this.state.item} />
-                  <input type='submit' className='todoAdd' value='Add' />
-                </div>
-              </form>
-            </div>
+      <div className='row'>
+        <form onSubmit={this.handleSubmit}>
+          <div className='form-group col-sm-10' style={{width:'330px'}}>
+            <input type='text'className='todoCatalogForm' ref='item' 
+                  onChange={this.handleChange} value={this.state.item} />
+            <input type='submit' className='todoCatalogAdd' value='Add' />
           </div>
-        </div>
+        </form>
       </div>
     );
   };
 }
-export default ToDoForm;
+export default ToDoCatalogForm;
