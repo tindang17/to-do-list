@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './style/logo.svg';
 import './style/App.css';
 import ReactDOM from 'react-dom';
+import ToDoForm from './components/toDoForm.jsx';
 // 
 class ToDoBanner extends Component {
   render () {
@@ -12,97 +13,7 @@ class ToDoBanner extends Component {
     );
   }
 }
-// ToDo List
-class ToDoList extends Component {
-  render() {
-    const items = this.props.items.map(item => {
-      return <ToDoListItem item = {item} key = {item.id} onDelete = {this.props.onDelete}/>
-    });
-    return (
-      <main className='todoItems'>
-        <ul>{items}</ul>
-      </main>
-    );
-  };
-}
-// Items of ToDoList
-class ToDoListItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isDone: false
-    };
-    this.handleClick = this.handleClick.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-  };
-  
-  handleClick (e) {
-    const target = e.target;
-    const value = target.type==='checkbox' ? target.checked : target.value;
-    this.setState({
-      isDone: value
-    });
-  };
 
-  handleDelete () {
-    this.props.onDelete(this.props.item.name);
-  }
-  render() {
-    let _style = 'line-through';
-    if(!this.state.isDone) {
-      _style= 'none';
-    };
-    return (
-      <div className='todoItem'>
-        <li>
-          <span style={{'textDecoration': _style}}>{this.props.item.name}</span> 
-          <input type='checkbox' onClick={this.handleClick} checked={this.state.isDone}/>
-          <button type='button' name='delete' onClick={this.handleDelete}>&times;</button>
-        </li>
-      </div>
-    );
-  };
-}
-// ToDoList form
-class ToDoForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      item: ''
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  };
-
-  handleSubmit (e) {
-    const self = this.state;
-    e.preventDefault();
-    this.props.onFormSubmit(self.item);
-    this.setState({item: ''});
-    ReactDOM.findDOMNode(this.refs.item).focus();
-    return;
-  };
-
-  handleChange (e) {
-    this.setState({
-      item: e.target.value
-    });
-  };
-
-  render() {
-    return (
-      <div className='row'>
-        <form onSubmit={this.handleSubmit}>
-          <div className='form-group col-sm-10'>
-            <input type='text'className='todoForm' ref='item' 
-                  onChange={this.handleChange} value={this.state.item} />
-            <input type='submit' className='todoAdd' value='Add' />
-          </div>
-        </form>
-      </div>
-    );
-  };
-}
 class App extends Component {
   // set initial stage
   constructor(props) {
