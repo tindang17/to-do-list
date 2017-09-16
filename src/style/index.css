@@ -11,7 +11,7 @@ body {
   border-top: 1px solid black;
   display: flex;
   padding: 5px;
-  position: fixed;
+  position: absolute;
 }
 
 .todoAdd {

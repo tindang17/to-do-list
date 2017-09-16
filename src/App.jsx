@@ -6,28 +6,62 @@ import ReactDOM from 'react-dom';
 class ToDoBanner extends Component {
   render () {
     return (
-      <h3 className='todoBanner'>TODO List with React</h3>
+      <div className='todoBanner'>
+        <h3>TODO List with React</h3>
+      </div>
     );
   }
 }
 // ToDo List
 class ToDoList extends Component {
   render() {
-    const createItem = (itemText) => {
-      return (
-        <ToDoListItem>{itemText}</ToDoListItem>
-      );
-    };
-    return <ul>{this.props.items.map(createItem)}</ul>
-  }
+    const items = this.props.items.map(item => {
+      return <ToDoListItem item = {item} key = {item.id} onDelete = {this.props.onDelete}/>
+    });
+    return (
+      <main className='todoItems'>
+        <ul>{items}</ul>
+      </main>
+    );
+  };
 }
 // Items of ToDoList
 class ToDoListItem extends Component {
-  render() {
-    return (
-      <li data-id={this.props.value} key={this.props.value}>{this.props.children} </li>
-    );
+  constructor(props) {
+    super(props);
+    this.state = {
+      isDone: false
+    };
+    this.handleClick = this.handleClick.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  };
+  
+  handleClick (e) {
+    const target = e.target;
+    const value = target.type==='checkbox' ? target.checked : target.value;
+    this.setState({
+      isDone: value
+    });
+  };
+
+  handleDelete () {
+    this.props.onDelete(this.props.item.name);
   }
+  render() {
+    let _style = 'line-through';
+    if(!this.state.isDone) {
+      _style= 'none';
+    };
+    return (
+      <div className='todoItem'>
+        <li>
+          <span style={{'textDecoration': _style}}>{this.props.item.name}</span> 
+          <input type='checkbox' onClick={this.handleClick} checked={this.state.isDone}/>
+          <button type='button' name='delete' onClick={this.handleDelete}>&times;</button>
+        </li>
+      </div>
+    );
+  };
 }
 // ToDoList form
 class ToDoForm extends Component {
@@ -38,7 +72,7 @@ class ToDoForm extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-  }
+  };
 
   handleSubmit (e) {
     const self = this.state;
@@ -66,22 +100,43 @@ class ToDoForm extends Component {
           </div>
         </form>
       </div>
-    )
-  }
+    );
+  };
 }
 class App extends Component {
   // set initial stage
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      items: [
+        {
+          name: 'ToDo item #1',
+          isDone: false
+        },
+        {
+          name: 'ToDo item #2',
+          isDone: true
+        }
+      ]
     };
     this.updateItems = this.updateItems.bind(this);
-  }
+    this.deleteItems = this.deleteItems.bind(this);
+  };
   // update to do list
   updateItems (newItem) {
-    const allItems = this.state.items.concat([newItem]);
+    const item = {name: newItem, isDone: false};
+    const allItems = this.state.items.concat([item]);
     this.setState({items: allItems});
+  };
+
+  deleteItems (index) {
+    // copy the array
+    const newData = this.state.items.slice();
+    // remove one element from the stated index
+    newData.splice(index, 1);
+    this.setState({
+      items: newData
+    });
   }
 
 
@@ -98,10 +153,10 @@ class App extends Component {
         <div>
           <ToDoBanner />
           <ToDoForm onFormSubmit = {this.updateItems} />
-          <ToDoList items = {this.state.items} />
+          <ToDoList items = {this.state.items} onDelete={this.deleteItems}/>
         </div>
       </div>
     );
-  }
+  };
 }
 export default App;
