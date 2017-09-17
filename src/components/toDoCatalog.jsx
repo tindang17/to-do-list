@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
 
 class ToDoCatalog extends Component {
-
+  constructor(props) {
+    super(props);
+    this.changeToDo = this.changeToDo.bind(this);
+  }
   changeToDo (e) {
-    console.log(e.currentTarget.dataset.id)
+    // console.log(e.currentTarget.dataset.id)
     this.props.onSelected(e.currentTarget.dataset.id);  
   };
 
   render () {
-    console.log(this)
+    const allItems = this.props.toDo;
     const selectedID = this.props.selectedID;
-    const allItems = this.props.toDos;
-
+    console.log('in render ALLITEMS', allItems)
     return <div className = 'list-group'> {
       allItems.map((item, i) => {
         let _class = '';
@@ -21,7 +23,7 @@ class ToDoCatalog extends Component {
           _class = 'list-group-item';
         };
         return (
-          <a href='#' key={i} data-id={i} className={_class} onClick={this.changeToDo.bind(this)}>
+          <a href='#' key={i} data-id={i} className={_class} onClick={this.changeToDo}>
             <span className='badge'>{item.items.length}</span>{item.name}</a>
         );
       }, this)  

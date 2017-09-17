@@ -2,7 +2,9 @@
 import React, {Component} from 'react';
 import ToDoListItem from './toDoListItem.jsx';
 class ToDoList extends Component {
+
   render() {
+    console.log('in todolist', this.props.items);
     const items = this.props.items.map(item => {
       return <ToDoListItem item = {item} key = {item.id} onDelete = {this.props.onDelete}/>
     });
@@ -12,7 +14,7 @@ class ToDoList extends Component {
         <div className="row">
           <div className="col-xs-12">
             <div className='todoItems'>
-              <ul style={{width:'1040px'}}>{items}</ul>
+              <ul style={{width:'640px'}}>{items}</ul>
             </div>
           </div>
         </div>

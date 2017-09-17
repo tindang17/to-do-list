@@ -9,7 +9,8 @@ ul {
   text-align: left;
 }
 .deleteToDo {
-  margin-left: 420px;
+  float: right;
+  position: absolute;
 }
 
 .todoApp {
