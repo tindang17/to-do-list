@@ -10,11 +10,11 @@ const pool = new pg.Pool({
   port: process.env.DB_PORT
 });
 // establish communication with database
-pool.connect((err) => {
+pool.connect((err, client) => {
   if (err) {
     return console.log('Connection error', err);
   }
-  client.query('CREATE TABLE items (id SERIAL PRIMARY KEY, text VARCHAR(50) not null, complete BOOLEAN)', (err) => {
+  client.query('CREATE TABLE todo_items (id INT PRIMARY KEY, todo VARCHAR(80) not null, complete BOOLEAN)', (err) => {
     if(err) {
       console.log('error while running query', err);
     }
