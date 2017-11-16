@@ -2,6 +2,7 @@
   "name": "to-do-list",
   "version": "0.1.0",
   "private": true,
+  "proxy" : "http://localhost:3001/",
   "dependencies": {
     "css-loader": "^0.28.0",
     "react": "^15.6.1",

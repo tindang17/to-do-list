@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Form, Checkbox, Button } from 'semantic-ui-react'; 
+
 class ToDoForm extends Component {
   constructor(props) {
     super(props);
@@ -9,8 +9,24 @@ class ToDoForm extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
+    fetch('/api/todos', {
+      method: 'POST',
+      credentials: 'same-origin',
+      body: JSON.stringify({
+        name: this.state.name,
+        complete: false
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => {
+      return response.text();
+    })
+    .catch(error => {
+      console.log(error);
+    });
     this.setState({name: ''});
-    console.log('In Submit', this.state)
     this.props.updateToDo(this.state.name);
   };
 

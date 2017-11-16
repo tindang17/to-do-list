@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './style/logo.svg';
 import './style/App.css';
-import ReactDOM from 'react-dom';
 import ToDoForm from './components/ToDoForm';
 import ToDoList from './components/ToDoList';
 
@@ -16,8 +15,14 @@ class App extends Component {
     const toDoItem = {name: item, complete: false};
     this.setState({todos : this.state.todos.concat(toDoItem)});
   }
+
+  componentDidMount() {
+    fetch('/api/todos', {
+      console.log(res)
+    });
+  }
+
   render() {
-    console.log('IN APP', this.state);
     return (
       <div className="App">
         <div className="App-header">
