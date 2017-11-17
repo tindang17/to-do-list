@@ -9,6 +9,15 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
+
+app.get('/api/todos', (req, res) => {
+  knex.select('*')
+      .from('todo_items')
+      .then(result => {
+        console.log(result);
+        res.json(result);
+      });
+});
 app.listen(3001, () => {
   console.log('server is running on port 3001')
 });
