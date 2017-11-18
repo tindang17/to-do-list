@@ -18,6 +18,20 @@ app.get('/api/todos', (req, res) => {
         res.json(result);
       });
 });
+
+app.post('/api/todos', (req, res) => {
+  knex
+  .insert({
+      todo: req.body.name,
+      complete: req.body.complete
+  })
+  .into('todo_items')
+  .then(result => {
+    res.json(result).status(200);
+  })
+  .catch(error => console.log(`Error while running query ${error}`));
+});
+
 app.listen(3001, () => {
   console.log('server is running on port 3001')
 });
