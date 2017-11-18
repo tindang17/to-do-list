@@ -32,6 +32,7 @@ app.post('/api/todos', (req, res) => {
   .catch(error => console.log(`Error while running query ${error}`));
 });
 
+app.post('/api/todos/:id')
 app.listen(3001, () => {
   console.log('server is running on port 3001')
 });

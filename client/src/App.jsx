@@ -23,9 +23,8 @@ class App extends Component {
     .then(response => response.json())
     .then(data => {
       const filteredData = data.map(item => {
-        return {name: item.todo, complete: item.complete};
+        return {id: item.id, name: item.todo, complete: item.complete};
       });
-      console.log(filteredData);
       this.setState({todos: this.state.todos.concat(filteredData)});
     });
   }

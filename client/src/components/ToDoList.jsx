@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import ToDoItem from './ToDoItem';
+
 class ToDoList extends Component {
   render () {
     let todos = this.props.todos.map(todo => {
-      return <tr><td><ToDoItem todo = {todo} key = {todo.id} /></td></tr>;
+      return <tr key={todo.id.toString()}><td><ToDoItem todo={todo} /></td></tr>;
     })
     return (
       <section className='todo-list'>
