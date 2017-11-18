@@ -3,12 +3,16 @@ import ToDoItem from './ToDoItem';
 class ToDoList extends Component {
   render () {
     let todos = this.props.todos.map(todo => {
-      return <ToDoItem todo = {todo} key = {todo.id} />;
+      return <tr><td><ToDoItem todo = {todo} key = {todo.id} /></td></tr>;
     })
     return (
-      <main className='todos'>
-        {todos}
-      </main>
+      <section className='todo-list'>
+        <table>
+          <tbody>
+            {todos}
+          </tbody>
+        </table>
+      </section>
     );
   };
 }

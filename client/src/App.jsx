@@ -3,6 +3,8 @@ import logo from './style/logo.svg';
 import './style/App.css';
 import ToDoForm from './components/ToDoForm';
 import ToDoList from './components/ToDoList';
+import './style/container.css';
+import './style/todoForm.css';
 
 class App extends Component {
   constructor(props) {
@@ -17,24 +19,29 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/todos', {
-      console.log(res)
+    fetch('/api/todos')
+    .then(response => response.json())
+    .then(data => {
+      const filteredData = data.map(item => {
+        return {name: item.todo, complete: item.complete};
+      });
+      console.log(filteredData);
+      this.setState({todos: this.state.todos.concat(filteredData)});
     });
   }
-
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Welcome to the ToDoList</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <div>
-          <ToDoForm updateToDo = {this.updateToDo}/>
-          <ToDoList todos = {this.state.todos}/>
+        <div className="container">
+          <h2 className="container-header">Get things done</h2>
+          <main className="container-body">
+            <ToDoForm updateToDo = {this.updateToDo}/>
+            <ToDoList todos = {this.state.todos}/>
+          </main>
         </div>
       </div>
     );

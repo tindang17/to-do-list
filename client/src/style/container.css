@@ -1,0 +1,25 @@
+.container {
+  width: 700px;
+  margin: auto;
+  background-color: rgb(240, 240, 240);
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+}
+
+main.container-body {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h2 {
+  margin: auto;
+  padding-top: 15px;
+}
+
+table {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 100%;
+}

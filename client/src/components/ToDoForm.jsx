@@ -4,7 +4,7 @@ class ToDoForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
+      name: ''
     };
   };
   handleSubmit = (e) => {
@@ -21,25 +21,29 @@ class ToDoForm extends Component {
       }
     })
     .then(response => {
-      return response.text();
+      return response.json();
     })
     .catch(error => {
-      console.log(error);
+      console.log(`There is an error while inputting data ${error}`);
     });
     this.setState({name: ''});
     this.props.updateToDo(this.state.name);
   };
+
 
   handleInputChange = (e) => {
     const target = e.target;
     const item = target.value;
     this.setState({name : item});
   };
+  componentDidMount() {
+  }
+
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type='text' name='name' value={this.state.name} onChange={this.handleInputChange}/>
-        <input type='submit' value='submit'/>
+      <form className='todo-form' onSubmit={this.handleSubmit}>
+        <input className='input-field' type='text' name='name' value={this.state.name} onChange={this.handleInputChange}/>
+        <input className='form-button' type='submit' value='submit' disabled={!this.state.name}/>
       </form>
     );
   };

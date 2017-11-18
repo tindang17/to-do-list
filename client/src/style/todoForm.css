@@ -1,0 +1,45 @@
+.formCheckbox {
+  display: inline;
+}
+.input-field {
+  border: 1px solid cornflowerblue;
+  width: 400px;
+  height: 40px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.form-button {
+  display: block;
+  width: 400px;
+  border: 2px;
+  height: 29px;
+  border-radius: 25px;
+  background-color: #FFF;
+  margin: auto;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: 1px solid cornflowerblue;
+}
+
+.form-button:hover {
+  background-color: cornflowerblue;
+  color: #FFF;
+}
+.toDoName {
+  float: left;
+  margin-left: 36px;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.isToDoComplete {
+  float: right;
+  margin-right: 44px;
+  line-height: 1.8;
+  margin-top: 6px;
+}
+
+input[type=checkbox] {
+  transform:scale(1.2, 1.2);
+}
