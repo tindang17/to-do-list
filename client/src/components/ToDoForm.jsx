@@ -36,8 +36,6 @@ class ToDoForm extends Component {
     const item = target.value;
     this.setState({name : item});
   };
-  componentDidMount() {
-  }
 
   render() {
     return (
