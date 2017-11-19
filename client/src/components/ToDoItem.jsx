@@ -10,7 +10,6 @@ class ToDoItem extends Component {
   handleCheckbox = (e) => {
     e.preventDefault();
     const target = e.target;
-    console.log(target.checked);
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
@@ -18,19 +17,19 @@ class ToDoItem extends Component {
       [name]: value
     });
   }
+
   render() {
 
     return (
-      <section>
+    <td>
         <span className='toDoName'>{this.props.todo.name}</span>
-        <form className='formCheckbox'>
-          <input className='isToDoComplete'
-                name='complete'
-                type='checkbox'
-                checked={this.state.complete}
-                onChange={this.handleCheckbox}/>
-        </form>
-      </section>
+        <input className='isToDoComplete'
+              name='complete'
+              type='checkbox'
+              checked={this.state.complete}
+              onChange={this.handleCheckbox}/>
+
+      </td>
     );
   };
 }
