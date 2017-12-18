@@ -14,7 +14,6 @@ app.get('/api/todos', (req, res) => {
   knex.select('*')
       .from('todo_items')
       .then(result => {
-        console.log(result);
         res.json(result);
       });
 });
@@ -32,6 +31,7 @@ app.post('/api/todos', (req, res) => {
   .catch(error => console.log(`Error while running query ${error}`));
 });
 
+app.post('/api/todos/:id')
 app.listen(3001, () => {
   console.log('server is running on port 3001')
 });

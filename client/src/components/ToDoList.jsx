@@ -1,19 +1,18 @@
-import React, {Component} from 'react';
-import ToDoItem from './ToDoItem';
-class ToDoList extends Component {
-  render () {
-    let todos = this.props.todos.map(todo => {
-      return <tr><td><ToDoItem todo = {todo} key = {todo.id} /></td></tr>;
-    })
+import React from "react";
+import ToDoItem from "./ToDoItem";
+import PropTypes from 'prop-types';
+const ToDoList = props => {
+  let todos = props.todos.map(todo => {
     return (
-      <section className='todo-list'>
-        <table>
-          <tbody>
-            {todos}
-          </tbody>
-        </table>
-      </section>
+      <tr key={todo.id.toString()}>
+        <ToDoItem todo={todo} />
+      </tr>
     );
-  };
+  });
+  return (
+    <table className="ToDoList">
+      <tbody>{todos}</tbody>
+    </table>
+  );
 }
 export default ToDoList;
