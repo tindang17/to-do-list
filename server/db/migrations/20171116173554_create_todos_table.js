@@ -1,6 +1,6 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('todo_items', (table) => {
+  return knex.schema.createTable('todo_items', table => {
     table.increments('id');
     table.string('todo');
     table.boolean('complete');

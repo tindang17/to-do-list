@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import logo from './style/logo.svg';
-import './style/App.css';
-import ToDoForm from './components/ToDoForm';
-import ToDoList from './components/ToDoList';
-import './style/container.css';
-import './style/todoForm.css';
+import React, { Component } from "react";
+import logo from "./style/logo.svg";
+import "./style/App.css";
+import ToDoForm from "./components/ToDoForm";
+import ToDoList from "./components/ToDoList";
+import "./style/container.css";
+import "./style/todoForm.css";
 
 class App extends Component {
   constructor(props) {
@@ -13,22 +13,23 @@ class App extends Component {
       todos: []
     };
   }
-  updateToDo = (item) => {
-    const toDoItem = {name: item, complete: false};
-    this.setState({todos : this.state.todos.concat(toDoItem)});
-  }
+  updateToDo = item => {
+    const toDoItem = { name: item, complete: false };
+    this.setState({ todos: this.state.todos.concat(toDoItem) });
+  };
 
   componentDidMount() {
-    fetch('/api/todos')
-    .then(response => response.json())
-    .then(data => {
-      const filteredData = data.map(item => {
-        return {id: item.id, name: item.todo, complete: item.complete};
+    fetch("/api/todos")
+      .then(response => response.json())
+      .then(data => {
+        const filteredData = data.map(item => {
+          return { id: item.id, name: item.todo, complete: item.complete };
+        });
+        this.setState({ todos: this.state.todos.concat(filteredData) });
       });
-      this.setState({todos: this.state.todos.concat(filteredData)});
-    });
   }
   render() {
+    const {todos} = this.state;
     return (
       <div className="App">
         <div className="App-header">
@@ -38,12 +39,12 @@ class App extends Component {
         <div className="container">
           <h2 className="container-header">Get things done</h2>
           <main className="container-body">
-            <ToDoForm updateToDo = {this.updateToDo}/>
-            <ToDoList todos = {this.state.todos}/>
+            <ToDoForm updateToDo={this.updateToDo} />
+            <ToDoList todos={todos} />
           </main>
         </div>
       </div>
     );
-  };
+  }
 }
 export default App;

@@ -14,7 +14,6 @@ app.get('/api/todos', (req, res) => {
   knex.select('*')
       .from('todo_items')
       .then(result => {
-        console.log(result);
         res.json(result);
       });
 });
